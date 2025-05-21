@@ -1,22 +1,40 @@
 
+- [To Start](#to-start)
 - [escalation](#escalation)
 - [Tags](#tags)
 - [Short cuts](#short-cuts)
 - [commands](#commands)
 - [EXCEPTIONS - done twice  a day (9:30 and 15:30)](#exceptions---done-twice--a-day-930-and-1530)
+- [DELETE/ABORT TASK/SERVICE DELIVERY (AND C\&E CARDS)](#deleteabort-taskservice-delivery-and-ce-cards)
+  - [Manage person - not for us](#manage-person---not-for-us)
+  - [task needs to be reinstated](#task-needs-to-be-reinstated)
 - [IEBF](#iebf)
+  - [VR cards (voluntary return)](#vr-cards-voluntary-return)
   - [BAD CW](#bad-cw)
   - [MERGE](#merge)
+  - [DE MERGE](#de-merge)
   - [OOPS ERROR](#oops-error)
   - [OOPS ERROR 2](#oops-error-2)
-  - [DELETE/ABORT TASK/SERVICE DELIVERY](#deleteabort-taskservice-delivery)
   - [One step party exception](#one-step-party-exception)
   - [CHANGE SD STATUS (UNABLE TO RAISE COS ONE IN PROGRESS - NO TASK)](#change-sd-status-unable-to-raise-cos-one-in-progress---no-task)
+  - [missing CEPR](#missing-cepr)
 - [HOTD (home office travel document)](#hotd-home-office-travel-document)
   - [travel doc status upload](#travel-doc-status-upload)
   - [oops errror](#oops-errror)
   - [HOTD exception](#hotd-exception)
-  - [travel doc didn't print](#travel-doc-didnt-print)
+  - [travel doc didn't print - see WI](#travel-doc-didnt-print---see-wi)
+  - [task on task list but not on atlas](#task-on-task-list-but-not-on-atlas)
+  - [inbound on wrong UAN](#inbound-on-wrong-uan)
+  - [wrong document uploaded](#wrong-document-uploaded)
+- [User access](#user-access)
+  - [PIP OOC PERSON SEARCH (should be USER ACCESS)](#pip-ooc-person-search-should-be-user-access)
+  - [User cannot access Person Search, receives, (Hmm cannot reach page)  (PIS should be USER ACCESS - send to Zamia)](#user-cannot-access-person-search-receives-hmm-cannot-reach-page--pis-should-be-user-access---send-to-zamia)
+
+
+# To Start
+1. to use the atlas toolbox 
+2. `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"`
+
 
 # escalation 
 - Person products (id person search, person summary view) -> Accenture – PPD Level 3 Support – INC
@@ -32,7 +50,7 @@
 - **ls-ib-oops** - oops errors 
 
 # Short cuts 
- 
+ - on atlas open all the case history, then cmd f the uan to find the case
 
 # commands
 
@@ -82,13 +100,85 @@
 19. when done with the 4 queues, take another screen shot 
 20. send to the same channel
 
+# DELETE/ABORT TASK/SERVICE DELIVERY (AND C&E CARDS)
+![alt text](image-2.png)
+![alt text](image-19.png)
+1. wanted a dependents removed bc they made an extra one
+2. use the triage script and see there are 2 dependants but there are no tasks or cases
+3. the caseworkers supervisor can do the deletion
+4. use this if a case worker wants to abort, reassing or delete a task, delete a service delivery
+5. use .deletetask in resolution notes
+6. tag as **ls-ib-no-issue**
+7. resolve as no issue
+8. if they've already got a manager to assist then escalate to atlas ie & bf
+9. copy the `atlas eventhis [UAN]` of the UAN of what needs to be deleted
+10. and do the same for `atlas uan2sddetails [UAN]`
+11. place the outputs in work notes
 
+## Manage person - not for us
+1. ![alt text](image-30.png)
+2. change PIS to manage person 
+3. change config item to Managing Checks and Traces (App Svc)
+4. "reassigned" in work notes
+
+## task needs to be reinstated 
+1. find where the task is deleted and screen shot 
+" Hi,
+
+The task was deleted in the screenshot below in error by the case worker, can you please reinstate the task.
+UAN: 1212-0099-0411-0456
+
+Kind regards,
+L2"
+2. change PIS to asylum claim
+3. assignment group - HODDaT - "Immigration Technology Portfolio - Mastek L3 Service Ops"
 
 # IEBF
+
+## VR cards (voluntary return)
+https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?spaceKey=SM&title=Moving+Voluntary+Return+Cards
+![alt text](image-24.png)
+1. copy the url of where the VR is currently (wrong person)
+2. right click on the tab - pin the old url
+3. copy the url for where the VR is going and open the atals profile
+4. cd into asylum scripts kt file -> IEBF 
+5. place the wrong persons ref number (ie UAN) into the wrongperson.txt
+6. place the right person ref nummber (ie CID PERSON) into the correctperson.txt
+7. go to the right persons "Identity documents and other references"
+8. grab the unique identifier and paste in aukperson.txt file
+![alt text](image-25.png)
+9. go the the wrong profile and copy the uan
+10. use the cmd `atlas uan2sd [UAN]` copy all the sd
+11. paste them in the servicedelivery.txt file and keep the format
+12. run the cmd `python3 move_sd_and_identities.py` 
+13. check the wrong person atlas - vr should be gone
+14. check the right person - should have appeared
+15. go the vr case card -> grab the APPLICATION sd id
+16. go to this endpoint "https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/v3/event/handle/SERVICE_DELIVERY/type/APPLICATION_ENTERED_IDENTITY/id/{ServiceDeliveryID}?include_deleted=false"
+17. replace the {ServiceDeliveryID} with the sd id
+18. cmd + f "IDENTIFY - interface_identifier"
+ ![alt text](image-26.png)
+19. Grab the identifier
+20. go to the second endpoint https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/v2/identity/{IdentityInterfaceID}?include_deleted=false
+21.  replace the {IdentityInterfaceID} wiht the one from step 19
+22.  Open up the 3rd endpoint 
+23.  https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Identity%20V2%20APIs/DPS-IDNT-PUT-003
+24.  go to the 2nd endpoint change formatting to RAW PRETTY PRINT (see top left corner)
+25.  copy the contents 
+26.  past into 3rd endpoint (remove brakckets at the top)
+27.  amend the time stap by one sec (26->27)
+![alt text](image-27.png)
+28. replace identifier below to the correctperson ref
+![alt text](image-28.png)
+29. excute -> should see code 200
+30. refresh endpoint 2 - should see right person ref where it said "containing_person_handle"
+![alt text](image-29.png)
+31. resolve - "I have moved the VR card from the incorrect PSV to the correct PSV as requested."
+
 ## BAD CW
 ![alt text](image-3.png)
 1. bad case worker - no information 
-2. cw chase for more info, use the standard response below:
+2. cw chase for more info, use the standard response below
 
 Hi,
 
@@ -102,9 +192,9 @@ If you have a screenshot of the error as well as the page BEFORE it occurs, plea
 
 Your Incident will be temporarily suspended until we hear from you. In line with the standard ticket closure policy, if no further contact is received, your Incident will be resolved in 10 working days and then closed a further 10 working days from the resolution date, in-line with the current Incident Management process.
 
-4. tag as chase 1
-5. assign to myself
-6. awaiting info 
+3. tag as chase 1
+4. assign to myself
+5. awaiting info 
 
 
 ## MERGE 
@@ -122,6 +212,10 @@ This ticket will now be marked as resolved.
 Should problems persist, please contact the ITNow Service Desk and we shall endeavour to assist.
 4. If it gets reopened, then change PIS to "Atlas - Manage Person" and config item to "Person Merge"
 
+## DE MERGE 
+1. Send to HODDaT - IBM Managed Identities - INC
+2. "reassigned to merged identity team.
+
 ## OOPS ERROR 
 ![alt text](image.png)
 1. copy the correlation ID from the oops error into kibana
@@ -137,39 +231,6 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 ![alt text](image-4.png)
 1. follow the above
 2. tag as **ls-ib-oops**
-
-## DELETE/ABORT TASK/SERVICE DELIVERY 
-![alt text](image-2.png)
-1. wanted a dependents removed bc they made an extra one
-2. use the triage script and see there are 2 dependants but there are no tasks or cases
-3. the caseworkers supervisor can do the deletion
-
- "
- Administrative Tasks can be actioned by Caseworkers with Supervisor Access Permissions.
-
-Examples include:
-
-- Deleting/Aborting Tasks;
-- Deleting Service Deliveries within Case Cards.  (This will then delete the Case Card itself.)
-- Re-assigning Tasks and Case Cards.
-
-Please check with your Supervisor (or another colleague in your Team), as they may have been granted Supervisor Access Permissions and if so will be able to carry out this task.
-
-As the system appears to be working correctly we are resolving off this ticket.
-
-Should problems persist, please contact the ITnow Service Desk and we shall endeavour to assist. Please provide as much information as possible in order for SAS L2 to investigate further.
-"
-
-4. use this if a case worker wants to abort, reassing or delete a task, delete a service delivery
-5. tag as **in-no-issue**
-6. resolve as no issue
-7. if they've already got a manager to assist then escalate to atlas ie & bf
-8. copy the `atlas eventhis [UAN]` of the UAN of what needs to be deleted
-9. and do the same for `atlas uan2sddetails [UAN]`
-10. place the outputs in work notes
-
-
-
 
 ## One step party exception
 ![alt text](image-5.png)
@@ -192,6 +253,7 @@ Should problems persist, please contact the ITnow Service Desk and we shall ende
 
 ## CHANGE SD STATUS (UNABLE TO RAISE COS ONE IN PROGRESS - NO TASK)
 ![alt text](image-8.png)
+1. View case details -> Find relevant case history and date. In this case - Electronic Monitoring.
 1. in progress service delivery with no tasks that is incomplete
 2. find the service delivery numbers for the review barriers sd that are incomplete (there were 2)
 3. use the curl comd to change the status of the sds to complete
@@ -212,6 +274,12 @@ curl -v -k -X PUT -H 'Content-Type: application/json' -d '{"refDataValueLongDesc
 8. tag **ls-ib-sd-inprogress**
 
 
+Check PIS - in this case it's IE & BF
+Go to atlas and go to compliance and enforcement
+
+## missing CEPR
+![alt text](image-23.png)
+1. escalate to PA IEBF
 
 
 
@@ -229,7 +297,7 @@ curl -v -k -X PUT -H 'Content-Type: application/json' -d '{"refDataValueLongDesc
 ![alt text](image-10.png)
 7. shows that the image did not upload
 8. reprint needed as the cw has tried to reupload 
-9. use atlas hotd_printreg [sd of app]
+9. use atlas hotd_printreq [sd of app]
 10. double check that another hotd hasnt been printed
 11. confirm yes on terminal
 12. run event hist again, see two travel_doc_status normally means be send off
@@ -254,19 +322,65 @@ curl -v -k -X PUT -H 'Content-Type: application/json' -d '{"refDataValueLongDesc
 6. awaiting info for them to reupload then we can retry the exception
 7. tag **ls-hotd-printexc**
 
-ATTEMPT TO RETRY ANY EXCEPTIONS ABOUT FROM REPRINT HANDLER
+**ATTEMPT TO RETRY ANY EXCEPTIONS APART FROM REPRINT HANDLER**
 
-## travel doc didn't print
+## travel doc didn't print - see WI
 ![alt text](image-12.png)
 1. check atlas to find the HOTD card
 2. check images - photo was uploaded before app, might be the issue (also the image name has special characters)
-3. check event hist on terminal
-4. get event w the sd nand dravel doc printed
+3. check event hist on terminal - `atlas eventhis [UAN]`
+4. get event w the sd and "travel_doc_status" - `atlas getevent [UAN] [EVENT_TYPE]`
 5. says travel doc is printed 
 6. expiry date is 2029 - seems correct 
 7. get event w notification status - no issue
 8. maybe they tried to upload but was unsuccessful bc it's already been printed
-9. change to awaiting info
+9.  change to awaiting info
 10. tell cw that we've check and it looks fine and ask them to confirm
 
+11. If travel_doc_status says error - send to PA consulting atlas
 
+12. if styck in wwait - no printed - send to PA ATLAS
+
+## task on task list but not on atlas
+![alt text](image-17.png)
+1. Get UAN and check on Atlas.
+2. If there is outstanding task with register -> send PA Consulting - Atlas - L3 Support - INC
+3. If none, issue solved. (This used to be common issue but now its fixed by L3)
+4. In this incident, they need Register task but it's not showing -> send PA Consulting - Atlas - L3 Support - INC 
+
+## inbound on wrong UAN
+1. escalate to PA-CONSULTING-ATLAS
+![alt text](image-18.png)
+
+## wrong document uploaded
+![alt text](image-21.png)
+1. copy the url from /caseworking
+2. paste into any random atlas web address from the /casworking 
+3. you should see the document id
+![alt text](image-20.png)
+4. run the cmd `atlas doc_replacement`
+5. paste the doc id
+6. paste the INC number 
+![alt text](image-22.png)
+7. refresh the page the cw gave and see if the document is blank
+8. if black then resolve
+
+# User access
+1. assign to zamia 
+
+
+## PIP OOC PERSON SEARCH (should be USER ACCESS)
+
+## User cannot access Person Search, receives, (Hmm cannot reach page)  (PIS should be USER ACCESS - send to Zamia)
+
+1. Click the little (i) icon next to the requesters name, and it'll show you additiional fields, crucially their poiseID
+2.  Check user PoiseID in openLDAP: https://atlas.service.pr.iptho.co.uk/Caseworking/ipt-ms-openldapadmin-webui/
+Looks ok, user has permission groups 1-3
+1. Check user poiseID in RHSSO:
+https://atlas-sysebsaiprd1.service.pr.iptho.co.uk/auth/admin/master/console/#/realms/immigrationportfolio/users
+Looks ok, user has openLDAP groups assigned to them.
+1. verify user is using correct link: yeah all good
+2. look for additional reasons, can see the user doesn't have a homeoffice email, it was changed to @jmsc.gov.uk 2 weeks ago, this is the likely cause,
+3. Resolution notes:
+"Hi, your permissions look fine in Atlas, this is most likely related to the domain change from homeoffice to jmsc, can you please liase with your manager to get access to Atlas again, it may be you need a different route to access than when you were in the home office domain.
+The root cause could be your PoiseID has changed, your Single Sign on information is now different, or are you using a different laptop or working from a different location?" 

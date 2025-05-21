@@ -1,125 +1,55 @@
-To sas-l2-as-dailychecks (09:30 & 15:30)
-
-Daily Checks - 13 May 2025
-
-
-Document Or HumanTriggered Exception:                         :21 -> 1
-[Attempts: 1]
-
-Results for "Task name - document or human","Case type - Asylum_support"
+Exception Replays:
+Fulfilment Execution:
+70 -> 70
+70 tasks found for "Task name - Fulfilment Execution","Case type - Asylum_support"
 Retry successful
 Retry is successful for the selected task.
 
+FE Accomodation Exception:
+102 -> 102
+102 tasks found for "Task name - FE Accomodation Exception","Case type - Asylum_support"
+Retry unsuccessful
+
+Please try again or report this issue using IT Now. The error ID for this issue is: 1a78d7fd-198d-45d5-8dcd-c3aa99a0812c.
+
+FE Payment Exception:
+116 -> 116
+116 tasks found for "Task name - FE Payment Exception","Case type - Asylum_support"
+Retry unsuccessful
+
+Please try again or report this issue using IT Now. The error ID for this issue is: dd9b558d-0ab5-4ab7-b82f-0226f8573827.
+
+FE Letter Generation Exception:
+9 -> 9
+9 tasks found for "Task name - FE Letter Generation Exception","Case type - Asylum_support"
+Retry unsuccessful
+
+Please try again or report this issue using IT Now. The error ID for this issue is: 33af7072-a9ad-4a34-a849-456c59133c99.
 
 
-
-Fulfilment Execution:                                         :70 ->  70
-[Attempts: 3]
-
-Results for "Task name - Fulfilment Execution","Case type - Asylum_support"
+Document Centric Registration Exception:
+10 ->10 
+10 tasks found for "Task name - Document Centric Registration Exception","Case type - Asylum_support"
 Retry successful
 Retry is successful for the selected task.
 
-Results for "Task name - Fulfilment Execution","Case type - Asylum_support"
-Retry successful
-Retry is successful for the selected task.
-
-Results for "Task name - Fulfilment Execution","Case type - Asylum_support"
-Retry successful
-Retry is successful for the selected task.
-
-
-FE Accomodation Exception                                     : 102  ->  102 
-[Attempts: 3]
-
-Results for "Task name - FE Accomodation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is: c5d50304-91b5-4ba2-a83b-6fa762f623db.
-
-Results for "Task name - FE Accomodation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:  b6b4900a-efa8-4a07-877e-9408a8f37a33.
-
-Results for "Task name - FE Accomodation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:  9ca52188-698b-455f-b2c7-608204676620.
-
-
-
-FE Payment Exception          	                              : 129  ->  129     			
-[Attempts: 3]
-
-Results for "Task name - FE Payment Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:  8716244e-dbfe-451c-a842-388c8740295e.
-
-Results for "Task name - FE Payment Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:   d8e820a9-e52f-4fd4-afca-e9e004914c7d.
-
-Results for "Task name - FE Payment Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:   700642f2-991f-40a3-ba7f-c41d5aa856c6.
-
-
-
-FE Letter Generation Exception	                              :9  ->  9
-[Attempts: 3]
-
-Results for "Task name - FE Letter Generation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:   5f350d28-4962-40c7-a255-e03223e29a3f.
-
-Results for "Task name - FE Letter Generation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:  0ce92f19-335f-4957-aede-3a4cf9ec320a..
-
-Results for "Task name - FE Letter Generation Exception","Case type - Asylum_support"
-Retry unsuccessful
-Please try again or report this issue using IT Now. The error ID for this issue is:  9bb8fb54-4e18-46a6-b707-f7359f705a13.
-
-
-
-Document Centric Registration Exception                       :10  ->  10 
-[Attempts: 3]
-
-Results for "Task name - Document Centric Registration Exception","Case type - Asylum_support"
-Retry successful
-Retry is successful for the selected task.
-
-Results for "Task name - Document Centric Registration Exception","Case type - Asylum_support"
-Retry successful
-Retry is successful for the selected task.
-
-Results for "Task name - Document Centric Registration Exception","Case type - Asylum_support"
-Retry successful
-Retry is successful for the selected task.
-
-
-One Step C&V With RFI Exception 		                      :0 -> 0 	
-[Attempts: 0]
-
+One Step C&V With RFI Exception:
+0 -> 0
 0 tasks found for "Task name - One Step C&V With RFI Exception","Case type - Asylum_support"
- 
-
-
-
-One Step Resolve Identity Exception                             :5  ->  0
-[Attempts: 1]
-
-Results for "Task name - One Step Resolve Identity Exception","Case type - Asylum_support"
+There are no tasks assigned to you or your workgroup.
+One Step Resolve Identity Exception:
+5 ->  5
+5 tasks found for "Task name - One Step Resolve Identity Exception","Case type - Asylum_support"
 Retry successful
 Retry is successful for the selected task.
-
-
-Investigate nino 		                      :0 -> 0 	
+There are no tasks assigned to you or your workgroup.
+Document Or HumanTriggered Registration Exception:
+22 -> 21
+21 tasks found for "Task name - Document or HumanTriggered Registration Exception","Case type - Asylum_support"
+Retry successful
+Retry is successful for the selected task.
+Investigate nino
+0 -> 0 
 0 tasks found for "Task name - Investigate nino","Case type - Further_SUB"
-
-[Attempts: 0]
-
-
-
-
-
-
-
+Current task list sorting order: Due date
+There are no tasks assigned to you or your workgroup.
