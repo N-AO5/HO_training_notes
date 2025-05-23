@@ -4,24 +4,26 @@
 - [Tags](#tags)
 - [Short cuts](#short-cuts)
 - [commands](#commands)
-- [EXCEPTIONS - done twice  a day (9:30 and 15:30)](#exceptions---done-twice--a-day-930-and-1530)
+- [EXCEPTIONS - Clear Dead Letter Queue of any new messages \& Replay exceptions - done twice  a day (9:30 and 15:30)](#exceptions---clear-dead-letter-queue-of-any-new-messages--replay-exceptions---done-twice--a-day-930-and-1530)
 - [DELETE/ABORT TASK/SERVICE DELIVERY (AND C\&E CARDS)](#deleteabort-taskservice-delivery-and-ce-cards)
   - [Manage person - not for us](#manage-person---not-for-us)
   - [task needs to be reinstated](#task-needs-to-be-reinstated)
 - [IEBF](#iebf)
-  - [VR cards (voluntary return)](#vr-cards-voluntary-return)
+  - [VR cards (voluntary return) move (CANNOT MOVE C\&E CARDS -\> PA IEBF)](#vr-cards-voluntary-return-move-cannot-move-ce-cards---pa-iebf)
   - [BAD CW](#bad-cw)
   - [MERGE](#merge)
   - [DE MERGE](#de-merge)
   - [OOPS ERROR](#oops-error)
   - [OOPS ERROR 2](#oops-error-2)
+  - [oops DOD](#oops-dod)
   - [One step party exception](#one-step-party-exception)
   - [CHANGE SD STATUS (UNABLE TO RAISE COS ONE IN PROGRESS - NO TASK)](#change-sd-status-unable-to-raise-cos-one-in-progress---no-task)
   - [missing CEPR](#missing-cepr)
 - [HOTD (home office travel document)](#hotd-home-office-travel-document)
-  - [travel doc status upload](#travel-doc-status-upload)
   - [oops errror](#oops-errror)
   - [HOTD exception](#hotd-exception)
+  - [Missing options on the drop down](#missing-options-on-the-drop-down)
+  - [travel doc status upload](#travel-doc-status-upload)
   - [travel doc didn't print - see WI](#travel-doc-didnt-print---see-wi)
   - [task on task list but not on atlas](#task-on-task-list-but-not-on-atlas)
   - [inbound on wrong UAN](#inbound-on-wrong-uan)
@@ -29,6 +31,8 @@
 - [User access](#user-access)
   - [PIP OOC PERSON SEARCH (should be USER ACCESS)](#pip-ooc-person-search-should-be-user-access)
   - [User cannot access Person Search, receives, (Hmm cannot reach page)  (PIS should be USER ACCESS - send to Zamia)](#user-cannot-access-person-search-receives-hmm-cannot-reach-page--pis-should-be-user-access---send-to-zamia)
+- [Asylum Claim](#asylum-claim)
+  - [accidently delete task](#accidently-delete-task)
 
 
 # To Start
@@ -68,7 +72,7 @@
 - uan2sddetails             - Get a UAN's service deliveries and details
 
 
-# EXCEPTIONS - done twice  a day (9:30 and 15:30)
+# EXCEPTIONS - Clear Dead Letter Queue of any new messages & Replay exceptions - done twice  a day (9:30 and 15:30)
 
 [EXCEPTION TEMPLATE](exception_retry)
 
@@ -83,12 +87,12 @@
 ![alt text](image-13.png)
 9. change the type for the last one as it is not asylum support
 ![alt text](image-14.png)
-10.   copy the document and past into the change below 
+10. copy the document and past into the channel below 
 ![alt text](image-15.png)
 
-
+---
 10. the next steps are for the AFTERNOON ONLY
-11. get active mq access (go to Asylum Support Operations Guide-> find the access mq link -> copy the vault cmd and run in in terminal to get the password -> the username is admin)
+11. get active mq access (go to Asylum Support Operations Guide-> find the access mq link -> copy the vault cmd and run in in terminal to get the password -> the username is admin) `vault read secret/pr-prd1/CASEWORKING/iptactivemqwui/pass`
 ![alt text](image-16.png)
 12. log into active mq
 13. screen shot the first 4 queues
@@ -96,7 +100,7 @@
 15. sort by time stamp (decending)
 16. click retry on each message ID
 17. sort by time stamp again and retry
-18. only do the most recent ones - you do not need to redo the ones you just did (if they failed theyll come back to the top thats why you sort by date)
+18. only do the ones from today - you do not need to redo the ones you just did (if they failed theyll come back to the top thats why you sort by date)
 19. when done with the 4 queues, take another screen shot 
 20. send to the same channel
 
@@ -135,12 +139,12 @@ L2"
 
 # IEBF
 
-## VR cards (voluntary return)
+## VR cards (voluntary return) move (CANNOT MOVE C&E CARDS -> PA IEBF)
 https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?spaceKey=SM&title=Moving+Voluntary+Return+Cards
 ![alt text](image-24.png)
 1. copy the url of where the VR is currently (wrong person)
 2. right click on the tab - pin the old url
-3. copy the url for where the VR is going and open the atals profile
+3. copy the url for where the VR is going and open the atlas profile
 4. cd into asylum scripts kt file -> IEBF 
 5. place the wrong persons ref number (ie UAN) into the wrongperson.txt
 6. place the right person ref nummber (ie CID PERSON) into the correctperson.txt
@@ -165,10 +169,10 @@ https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?sp
 23.  https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Identity%20V2%20APIs/DPS-IDNT-PUT-003
 24.  go to the 2nd endpoint change formatting to RAW PRETTY PRINT (see top left corner)
 25.  copy the contents 
-26.  past into 3rd endpoint (remove brakckets at the top)
+26.  past into 3rd endpoint (remove brackets at the top left)
 27.  amend the time stap by one sec (26->27)
 ![alt text](image-27.png)
-28. replace identifier below to the correctperson ref
+28. replace "containing_person_handle" identifier below to the correctperson ref
 ![alt text](image-28.png)
 29. excute -> should see code 200
 30. refresh endpoint 2 - should see right person ref where it said "containing_person_handle"
@@ -213,8 +217,9 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 4. If it gets reopened, then change PIS to "Atlas - Manage Person" and config item to "Person Merge"
 
 ## DE MERGE 
+![alt text](image-40.png)
 1. Send to HODDaT - IBM Managed Identities - INC
-2. "reassigned to merged identity team.
+2. "reassigned to merged identity team."
 
 ## OOPS ERROR 
 ![alt text](image.png)
@@ -231,6 +236,12 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 ![alt text](image-4.png)
 1. follow the above
 2. tag as **ls-ib-oops**
+
+## oops DOD 
+![alt text](image-37.png)
+1. change PIS to ATLAS - Daily Operations Dashboard (DOD)
+2. remove your name 
+3. leave assignment group
 
 ## One step party exception
 ![alt text](image-5.png)
@@ -286,24 +297,6 @@ Go to atlas and go to compliance and enforcement
 
 # HOTD (home office travel document)
 
-## travel doc status upload 
-![alt text](image-9.png)
-1. find the uan of that sd 
-2. check event history
-3. find the application sd (normally the longest one)
-4. double check that the sd is the  same as the one on atlas 
-5. to see if the doc was really no printed - travel_doc_status
-6. us the get event cmd - gives more details of the specific event 
-![alt text](image-10.png)
-7. shows that the image did not upload
-8. reprint needed as the cw has tried to reupload 
-9. use atlas hotd_printreq [sd of app]
-10. double check that another hotd hasnt been printed
-11. confirm yes on terminal
-12. run event hist again, see two travel_doc_status normally means be send off
-13. double check get event cmd again - the error persists so the photo the cw uploaded was not acceptable
-![alt text](image-11.png)
-14. tag **HOTD_reprint**
 
 ## oops errror 
 1. find the info on kibana
@@ -324,6 +317,49 @@ Go to atlas and go to compliance and enforcement
 
 **ATTEMPT TO RETRY ANY EXCEPTIONS APART FROM REPRINT HANDLER**
 
+## Missing options on the drop down 
+![alt text](image-31.png)
+1. go on atlas and check that the drop down only shows a few
+2. go on terminal and `source bash_profile`
+3. use the cmd `eventhis [SD ID]` - The service dleivery must be of the related inbound/outbound contact (check atlas)
+4. this will give a json file 
+![alt text](image-32.png)
+5. open finder and use cmd + shift + G and paste the path to the json file
+6. open the file in vscode 
+7. collapse line 2 and copy
+![alt text](image-33.png)
+8. cmd + a to select the whole file, cmd + v to paste the 2nd line that was copied
+9. scroll to the bottom and remove the comma
+![alt text](image-34.png)
+10. increase the time by one second at the bottonm
+![alt text](image-35.png)
+11. do the same for the top
+![alt text](image-36.png)
+12. copy the whole file, paste in this swagger page (click try it out)) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005
+13. execute and the code should be 200
+14. go to the psv and the menu should now have more options - resolve
+
+
+## travel doc status upload 
+![alt text](image-9.png)
+1. find the uan of that sd 
+2. check event history - `atlas eventhis [UAN]`
+3. find the application sd (normally the longest one)
+4. double check that the sd is the  same as the one on atlas 
+5. to see if the doc was really no printed - travel_doc_status
+6. use `atlas getevent [sd id] [event type]`- gives more details of the specific event 
+![alt text](image-10.png)
+7. shows that the image did not upload
+8. reprint needed as the cw has tried to reupload 
+9. use atlas hotd_printreq [sd of app]
+10. double check that another hotd hasnt been printed
+11. confirm yes on terminal
+12. run event hist again, see two travel_doc_status normally means be send off
+13. double check get event cmd again - the error persists so the photo the cw uploaded was not acceptable
+![alt text](image-11.png)
+14. tag **HOTD_reprint**
+
+
 ## travel doc didn't print - see WI
 ![alt text](image-12.png)
 1. check atlas to find the HOTD card
@@ -339,7 +375,7 @@ Go to atlas and go to compliance and enforcement
 
 11. If travel_doc_status says error - send to PA consulting atlas
 
-12. if styck in wwait - no printed - send to PA ATLAS
+12. if stuck in wwait - no printed - send to PA ATLAS
 
 ## task on task list but not on atlas
 ![alt text](image-17.png)
@@ -384,3 +420,14 @@ Looks ok, user has openLDAP groups assigned to them.
 3. Resolution notes:
 "Hi, your permissions look fine in Atlas, this is most likely related to the domain change from homeoffice to jmsc, can you please liase with your manager to get access to Atlas again, it may be you need a different route to access than when you were in the home office domain.
 The root cause could be your PoiseID has changed, your Single Sign on information is now different, or are you using a different laptop or working from a different location?" 
+
+# Asylum Claim
+
+## accidently delete task 
+![alt text](image-38.png)
+1. go on atlas and open all the cards 
+2. cnmd f the UAN
+3. find the sd that was aborted - screen shot and paste in work notes
+4. change Assignment group to `HODDaT - Immigration Technology Portfolio - Mastek L3 Service Ops`
+5. change Primary Impacted Service to `Atlas - Asylum Claim`
+![alt text](image-39.png)
