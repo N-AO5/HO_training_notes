@@ -1,9 +1,10 @@
 
 - [To Start](#to-start)
+- [Atlas toolbox installation](#atlas-toolbox-installation)
+- [L3 Pyhton script](#l3-pyhton-script)
 - [escalation](#escalation)
 - [Tags](#tags)
 - [Short cuts](#short-cuts)
-- [Oops errors](#oops-errors)
 - [commands](#commands)
 - [EXCEPTIONS - Clear Dead Letter Queue of any new messages \& Replay exceptions - done twice  a day (9:30 and 15:30)](#exceptions---clear-dead-letter-queue-of-any-new-messages--replay-exceptions---done-twice--a-day-930-and-1530)
 - [DELETE/ABORT TASK/SERVICE DELIVERY (AND C\&E CARDS)](#deleteabort-taskservice-delivery-and-ce-cards)
@@ -14,9 +15,10 @@
   - [BAD CW](#bad-cw)
   - [MERGE](#merge)
   - [DE MERGE](#de-merge)
-  - [OOPS ERROR](#oops-error)
-  - [OOPS ERROR 2](#oops-error-2)
+  - [OOPS ERROR - detention overview](#oops-error---detention-overview)
+  - [OOPS ERROR 2 - immmigration history](#oops-error-2---immmigration-history)
   - [oops DOD](#oops-dod)
+  - [oops - manage docs](#oops---manage-docs)
   - [One step party exception](#one-step-party-exception)
   - [CHANGE SD STATUS (UNABLE TO RAISE COS ONE IN PROGRESS - NO TASK)](#change-sd-status-unable-to-raise-cos-one-in-progress---no-task)
   - [missing CEPR](#missing-cepr)
@@ -31,16 +33,37 @@
   - [inbound on wrong UAN](#inbound-on-wrong-uan)
   - [wrong document uploaded](#wrong-document-uploaded)
 - [User access](#user-access)
-  - [PIP OOC PERSON SEARCH (should be USER ACCESS)](#pip-ooc-person-search-should-be-user-access)
+- [PIP OOC PERSON SEARCH](#pip-ooc-person-search)
   - [User cannot access Person Search, receives, (Hmm cannot reach page)  (PIS should be USER ACCESS - send to Zamia)](#user-cannot-access-person-search-receives-hmm-cannot-reach-page--pis-should-be-user-access---send-to-zamia)
 - [Asylum Claim](#asylum-claim)
   - [accidently delete task](#accidently-delete-task)
+  - [data ref no. fix (nas or port) - if not send to mastek](#data-ref-no-fix-nas-or-port---if-not-send-to-mastek)
 
 
 # To Start
 1. to use the atlas toolbox 
 2. `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"`
 
+
+# Atlas toolbox installation
+
+1. `curl -s -u nimota.ogunwoolu "https://bitbucket.bics-collaboration.homeoffice.gov.uk/projects/SLO/repos/atlas-toolbox/raw/install.sh?at=refs%2Fheads%2Fmaster" | sh`
+2. input bitbucket pass - Whatt3v3r-L1me-Freaks
+3. run `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"`
+
+# L3 Pyhton script
+
+1. `git clone -b feature/sd_diagnosis ssh://git@bitbucket.bics-collaboration.homeoffice.gov.uk/ipmsaf/asylum_l3_support_utilities.git` 
+2. cd into asylum_l3_support_utilities -> asylum_support -> Properties -> database
+3. run `vi databases.ini`
+4. key `i` to allow inserts 
+5. add db_password = iequei4T
+6. esc
+7. shift + colon key + wq (:wq)
+8. `catdatabases.ini` to doubke check
+9. `cd ..` x 2
+10. pwd = asylum_support
+11. run `python3.11 ./tunnel_service.py -n prd1`
 
 # escalation 
 - Person products (id person search, person summary view) -> Accenture – PPD Level 3 Support – INC
@@ -53,7 +76,8 @@
 **https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?pageId=739517788**
 
 - **ib-pa-reassign** - escalating to L3 PA
-- **ls-ib-oops** - oops errors 
+- **ls-ib-oops** - oops errors iebf
+- **ls-hotd-oops** - hotd oops errors
 
 # Short cuts 
  - on atlas open all the case history, then cmd f the uan to find the case
@@ -64,8 +88,6 @@
  - .retry - task rerty successfull
  - .natteam - goes to natioonality team - 500 error
 
-# Oops errors
-1. manage docs -> HODDaT - Immigration Technology Portfolio - Mastek L3 Service Ops
 
 # commands
 
@@ -180,7 +202,7 @@ https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?sp
 23.  https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Identity%20V2%20APIs/DPS-IDNT-PUT-003
 24.  go to the 2nd endpoint change formatting to RAW PRETTY PRINT (see top left corner)
 25.  copy the contents 
-26.  past into 3rd endpoint (remove brackets at the top left)
+26.  paste into 3rd endpoint (remove brackets at the top left)
 27.  amend the time stap by one sec (26->27)
 ![alt text](image-27.png)
 28. replace "containing_person_handle" identifier below to the correctperson ref
@@ -219,7 +241,7 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 1. Send to HODDaT - IBM Managed Identities - INC
 2. "reassigned to merged identity team."
 
-## OOPS ERROR 
+## OOPS ERROR - detention overview 
 ![alt text](image.png)
 1. copy the correlation ID from the oops error into kibana
 2. double check the oops error is still there on Atlas (Detentional review)
@@ -230,16 +252,19 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 ![alt text](image-1.png)
 7. tag as **ib-pa-reassign**
 
-## OOPS ERROR 2
+## OOPS ERROR 2 - immmigration history
 ![alt text](image-4.png)
-1. follow the above
+1. follow the above - pa ie & bf 
 2. tag as **ls-ib-oops**
 
 ## oops DOD 
 ![alt text](image-37.png)
 1. change PIS to ATLAS - Daily Operations Dashboard (DOD)
 2. remove your name 
-3. leave assignment group
+3. leave assignment group the same
+
+## oops - manage docs 
+1. send to HODDaT - Immigration Technology Portfolio - Mastek L3 Service Ops
 
 ## One step party exception
 ![alt text](image-5.png)
@@ -311,6 +336,7 @@ Go to atlas and go to compliance and enforcement
 4. copy person ID from atlas url
 5. escalate to pa consulting atlas
 6. can see work instruction
+7. **ls-hotd-oops**
 
 ## HOTD exception
 1. check if cleared on atlas outstanding task? if not check WI, if then resolve
@@ -411,7 +437,7 @@ Go to atlas and go to compliance and enforcement
 1. assign to zamia 
 
 
-## PIP OOC PERSON SEARCH (should be USER ACCESS)
+# PIP OOC PERSON SEARCH 
 
 ## User cannot access Person Search, receives, (Hmm cannot reach page)  (PIS should be USER ACCESS - send to Zamia)
 
@@ -437,3 +463,34 @@ The root cause could be your PoiseID has changed, your Single Sign on informatio
 4. change Assignment group to `HODDaT - Immigration Technology Portfolio - Mastek L3 Service Ops`
 5. change Primary Impacted Service to `Atlas - Asylum Claim`
 ![alt text](image-39.png)
+
+
+
+## data ref no. fix (nas or port) - if not send to mastek
+1. cannot complete COC in IA (intial accom) case card
+
+![alt text](image-44.png)
+
+1. run the L3 python script using the case ID (search the ref no. on atlas, case id in the url) 
+
+![alt text](image-45.png)
+
+8. the port ref as seen above is the incorrect format (UAN)
+
+9. !!! IF YOU CAN'T RUN THE SCRIPT !!! -> 
+10. open tasklist -> go to person search at the top
+
+![alt text](image-47.png)
+
+5. search the given incorrect port ref no
+6. right click the name and copy the link 
+7. open the link in a text editor and see in the url the peroson ID [CID_PEOPLE]
+
+9.  run ` atlas rut port -p [CID_PEOPLE]` 
+   
+![alt text](image-46.png)
+
+1. some of the port refs are uans (invalid), there are 2 port refs - ask cw for which one to be used 
+2. folLow the instruction on terminal - incorrect prt ref first, then correct
+3. resolve - solved 
+
