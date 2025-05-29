@@ -3,6 +3,7 @@
 - [escalation](#escalation)
 - [Tags](#tags)
 - [Short cuts](#short-cuts)
+- [Oops errors](#oops-errors)
 - [commands](#commands)
 - [EXCEPTIONS - Clear Dead Letter Queue of any new messages \& Replay exceptions - done twice  a day (9:30 and 15:30)](#exceptions---clear-dead-letter-queue-of-any-new-messages--replay-exceptions---done-twice--a-day-930-and-1530)
 - [DELETE/ABORT TASK/SERVICE DELIVERY (AND C\&E CARDS)](#deleteabort-taskservice-delivery-and-ce-cards)
@@ -19,6 +20,7 @@
   - [One step party exception](#one-step-party-exception)
   - [CHANGE SD STATUS (UNABLE TO RAISE COS ONE IN PROGRESS - NO TASK)](#change-sd-status-unable-to-raise-cos-one-in-progress---no-task)
   - [missing CEPR](#missing-cepr)
+- [Nationality team by changing the PIS](#nationality-team-by-changing-the-pis)
 - [HOTD (home office travel document)](#hotd-home-office-travel-document)
   - [oops errror](#oops-errror)
   - [HOTD exception](#hotd-exception)
@@ -55,6 +57,15 @@
 
 # Short cuts 
  - on atlas open all the case history, then cmd f the uan to find the case
+ - .badcw - not enough info given by caseworker 
+ - .dropdown - solved Missing options on the drop down menu
+ - .escalate - escalate to L3
+ - .oops - oops error
+ - .retry - task rerty successfull
+ - .natteam - goes to natioonality team - 500 error
+
+# Oops errors
+1. manage docs -> HODDaT - Immigration Technology Portfolio - Mastek L3 Service Ops
 
 # commands
 
@@ -182,20 +193,7 @@ https://confluence.bics-collaboration.homeoffice.gov.uk/pages/viewpage.action?sp
 ## BAD CW
 ![alt text](image-3.png)
 1. bad case worker - no information 
-2. cw chase for more info, use the standard response below
-
-Hi,
-
-Please confirm if you are still experiencing the error?
-
-If so, please provide further information about exactly what the error is and where it occurs, so we can investigate.
-
-Please include any error messages. If it is an Oops Error, please provide the Correlation ID, so we can investigate.
-
-If you have a screenshot of the error as well as the page BEFORE it occurs, please also attach this.
-
-Your Incident will be temporarily suspended until we hear from you. In line with the standard ticket closure policy, if no further contact is received, your Incident will be resolved in 10 working days and then closed a further 10 working days from the resolution date, in-line with the current Incident Management process.
-
+2. cw chase for more info, use the standard response - .badcw
 3. tag as chase 1
 4. assign to myself
 5. awaiting info 
@@ -293,7 +291,15 @@ Go to atlas and go to compliance and enforcement
 1. escalate to PA IEBF
 
 
+# Nationality team by changing the PIS
+![alt text](image-41.png)
+1. make sure there are screenshots of the error
+1. Goes to nationality team - change PIS 
+2. use .natteam in work notes 
 
+![alt text](image-42.png)
+
+3. change assignment group  to TSS ELS Resolver Group 1
 
 # HOTD (home office travel document)
 
@@ -337,7 +343,7 @@ Go to atlas and go to compliance and enforcement
 ![alt text](image-36.png)
 12. copy the whole file, paste in this swagger page (click try it out)) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005
 13. execute and the code should be 200
-14. go to the psv and the menu should now have more options - resolve
+14. go to the psv and the menu should now have more options - resolve .dropdown
 
 
 ## travel doc status upload 
