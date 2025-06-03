@@ -31,6 +31,8 @@
 - .escalate (escalate comment)
 - .pp (if problems persist resolve)
 - .deadline (External Enrolment Past Deadline event resolve)
+- .noclearexcep (exeption that won't clear - pa atlas)
+- .noexcep (no exception to clear)
 
 # Tags 
 - WS-IncSponsor
@@ -127,7 +129,7 @@
 3. fix the formatting 
 4. get the `sddetails [SD]` fom terminal 
 5. paste in wn
-6.  "Hello L3 please can you investigate this exception?"
+6. .noclearexcep
 7.  assign to **PA consulting -Atlas -l3 support**
 8.  tag **WS-Handffe**
 
