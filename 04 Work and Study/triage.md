@@ -4,6 +4,8 @@
 2. `export VAULT_ADDR=https://vault-elb.service.pr.iptho.co.uk:443 && vault login -method=ldap username=nimota.ogunwoolu` - use LDAP password
 3. use `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"` to use the atlas toolbox 
 
+# to end
+1. git push (if changed PAT) - username `N-AO5` and password is your personal access token 
 
 # SSB
 1. to get the repo `git clone ssh://git@bitbucket.bics-collaboration.homeoffice.gov.uk/lso/lso-scripts.git`
@@ -185,5 +187,50 @@ you complete this first, and the reconsider should go through.)
 5. send to accenture
 
 ## ris checks haven't started
-1. after checking event histor, psv and ris checks
+1. after checking event history, psv and ris checks
 2. send to PA consultant - add sddetails
+
+# FES STUFF w Alez Lams
+- DLQ dead letter queue - Means the messages were send but not rcieved and therefore end up in the DLQ 
+- SQS - simple message queues on amazon
+- change the thingy to 100 messges per page
+- note the queues you've done - only do ones with messages available and are DLQ
+
+1. Log in work spaces - use nimota.ogunwoolu, LDAP, workspace MFA 
+2. Go to the amazon sqs queue - https://eu-west-1.console.aws.amazon.com/sqs/v3/home?region=eu-west-1#/queues 
+3. The first one - is v1 doesnt have v2 in the name 
+4. V1s can only be replayed one at a time 
+5. In the second DLQ Tool for v1 
+6. Paste the name of the dlq you're doing - you wanna see that the number in the sqs is the same - paste in BRUNO - get list of all the letters
+7. run it look at the list, copy the ACTUAL name of 
+
+![alt text](image-32.png)
+
+1. copy the actual name - and paste in get DLQ message
+
+![alt text](image-30.png)
+
+8. so the top two line and bottom two are the brackets on the next so don't count, each message is 4 lines so..
+9. max number of lines - 4/ 4
+10. credits expire
+11. open in new tab - the first one is v1, copy the ARN into the value
+
+![alt text](image-28.png)
+
+1.  paste in source ARN
+
+![alt text](image-31.png)
+
+13. go back to the queue - go to redrive, copy the long number 
+
+![alt text](image-33.png)
+
+14. paste in the destination into the command 
+15. paste the cmd into the terminal 
+
+![alt text](image-34.png)
+
+
+# SPVs and PVs
+1. they have their own queue
+2. 
