@@ -13,6 +13,8 @@
 3. cd ssb_tunnel_scripts
 4. `sh ssb_db_tunnel.sh`
 5. test with `sh search_all.sh [UAN]` if doesnt work do step 4 again
+6. use `sh resend/resend_failed_message_id.sh [error code]` to resend an error
+7. DO NOT RESEND DUPLICATE ENROLMENT SSB ERRORS
 
 # Commands 
 - `uan2eventhis [UAN]` event history 
@@ -25,7 +27,8 @@
 
 # shortcuts
 - .missingapp (missing application escalate)
-- .ssberror (ssberror escalate)
+- .ssberror (ssberror resolve)
+- .ssbe (ssberror escalate - accenture)
 - .retry (retried exception resolve)
 - .resubapp (resubmit app resolve)
 - .notask (no task escalate)
@@ -35,6 +38,9 @@
 - .deadline (External Enrolment Past Deadline event resolve)
 - .noclearexcep (exeption that won't clear - pa atlas)
 - .noexcep (no exception to clear)
+- .further (further action overdue)
+- .risexpired (ris expired - send to accenture)
+- .risstuck (ris stuck - send to accenture)
 
 # Tags 
 - WS-IncSponsor
@@ -70,7 +76,7 @@
 1. Application is received
 2. Biometric enrollment (finger print scan process, photo) (if not- do SSB check)
 3. RIS checks(complete) - security checks
-4. Decide / decision complete (or something similer)
+4. Decide / decision complete (or something similar)
 5. Ready for consider/ Ready for reconsider (main thing you should see)
 6. When its reconsider registration -> go back and check RIS(expire in 2month), check Sdcorrelation (command checkSDCorrIDs [service delivery ID])
 7. Service delivery complete. (sometimes not showing)
@@ -80,7 +86,7 @@
 2. "@sas_im_team [INC number] - The ticket is not for work and study, can this be reassigned?"
 3. remove name from assigned on ticket 
 
-# merge
+# de-merge
 1. send the INC number to the #merge-identity-queries
 2. copy in your inc number
 3. copy the supplier ref that they give as a reply
@@ -118,7 +124,7 @@
 9. share -> permalinks -> short URL
 10. in wn .oops 
 11. fill in the URL and the sddetails 
-12. escalate to PA consulting - .esclate
+12. escalate to PA consulting atlas - .esclate
 13. tag **ws-oopserror**
 
 
@@ -159,9 +165,8 @@
 2. `uan2sddetail [UAN]` for further details
 3. If you see " -READY_FOR_CONSIDERATION - " the application has gone through
 4. use `psv [SD]` to see the consider/reconsider event history
-5. check the case details - if theres a futher action delay from the customer (Comment - Hi, there is a further action overdue on this service delivery - please can
-you complete this first, and the reconsider should go through.)
-5. the reconsider should go through after
+5. check the case details - if theres a futher action delay from the customer (Comment .further)
+6. the reconsider should go through after
 
 ## ssb error - no biometric enrolment
 1. `uan2eventhis [UAN]`
@@ -174,7 +179,7 @@ you complete this first, and the reconsider should go through.)
 8. run `sh search_all.sh [UAN]`  again
 9. if there are is no longer an error, check if the the enrolment has gone through 
 10. if the error code is the same, wait and rerun cmd
-11. if the error code is diffrent - send to PA consulting?
+11. if the error code is diffrent - send to accenture
 12. run `uan2eventhis [UAN]` - there should now be a biometric enrolment
 13. check psv as well - go into the grant - case details - application serice delivery details 
 14. tag as **ws-bios**
@@ -231,6 +236,31 @@ you complete this first, and the reconsider should go through.)
 ![alt text](image-34.png)
 
 
+## Grey task 
+ .ssbe
+
 # SPVs and PVs
 1. they have their own queue
-2. 
+
+# HOPS 
+
+## Passport triscans missing from HOPS
+
+![alt text](image-35.png)
+
+![alt text](image-36.png)
+
+![alt text](image-37.png)
+
+1. Triscans are missing from HOPS 
+2. resolve with no fault found - "Hi,
+
+a. If the tri-scan is missing, the customer will need to be recalled and you should follow the usual process to recall the applicant
+
+b. If the supporting evidence only is missing, but the tri scan is present, you should contact customer directly
+This ticket will now be marked as resolved.
+
+Should problems persist, please contact the ITNow Service Desk and we shall endeavour to assist.
+
+Thanks,
+SAS L2"
