@@ -81,7 +81,10 @@
 6. When its reconsider registration -> go back and check RIS(expire in 2month), check Sdcorrelation (command checkSDCorrIDs [service delivery ID])
 7. Service delivery complete. (sometimes not showing)
 
-# not for work and study (eg. cannot attatch photo)
+# not for work and study (eg. cannot attatch photo, change expiry date on visa)
+
+![alt text](image-40.png)
+
 1. go to slack channel #sas-tranche-1-2-3
 2. "@sas_im_team [INC number] - The ticket is not for work and study, can this be reassigned?"
 3. remove name from assigned on ticket 
@@ -264,3 +267,52 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 
 Thanks,
 SAS L2"
+
+# No bios have been linked to ATLAS
+![alt text](image-39.png)
+1. go to case on atlas (cmd f)
+2. application
+3. this example has been resolved -
+
+![alt text](image-41.png)
+
+4.  but if not - ask Fatima from help 
+
+![alt text](image-38.png)
+
+# Notification needs to be triggered 
+
+![alt text](image-42.png)
+
+1. copy what cw said 
+2. send to PA atlas
+3. add the sd
+
+# Caseworker cannot choose a service delivery
+
+![alt text](image-43.png)
+
+1. copy what cw said 
+2. .cwsaid
+3. send to PA atlas
+4. add the sd
+
+# Reallocate task to caseworker
+
+![alt text](image-44.png)
+
+![alt text](image-46.png)
+
+1. copy what cw said 
+2. .cwsaid
+3. send to PA atlas
+4. add the sd
+
+# Unable to remove task
+
+![alt text](image-45.png)
+
+1. copy what cw said 
+2. .cwsaid
+3. send to PA atlas
+4. add the sd
