@@ -41,6 +41,12 @@
 - .further (further action overdue)
 - .risexpired (ris expired - send to accenture)
 - .risstuck (ris stuck - send to accenture)
+- .cwsaid (repeat what the cw said escalate)
+- .facebios (facial images need to be linked - accenture)
+- .triscans (resolve)
+- .authhops (get hops permissions again)
+- .chase1 (cw chase 1)
+
 
 # Tags 
 - WS-IncSponsor
@@ -198,6 +204,26 @@
 1. after checking event history, psv and ris checks
 2. send to PA consultant - add sddetails
 
+
+# no bios - if no resolve send to accenture
+## no bios linked through on ATLAS, no ID Verification files in ATLAS
+![alt text](image-52.png)
+1. check atlas -> open the application -> if there biometric enrolment? -> resolve
+2. if not check facial images (if one says BRP - send to accenture, see fatima for message) 
+3. message the group chat to see if the enrolment does exist
+
+![alt text](image-53.png)
+
+4. if yes, copy the deets and send to accenture telling them to link the enrolment
+5. if not, close and ask cw to enroll
+
+
+
+
+
+
+
+
 # FES STUFF w Alez Lams
 - DLQ dead letter queue - Means the messages were send but not rcieved and therefore end up in the DLQ 
 - SQS - simple message queues on amazon
@@ -247,7 +273,7 @@
 
 # HOPS 
 
-## Passport triscans missing from HOPS
+## Passport triscans missing from HOPS/ Documents missing?
 
 ![alt text](image-35.png)
 
@@ -281,7 +307,6 @@ SAS L2"
 ![alt text](image-38.png)
 
 # Notification needs to be triggered 
-
 ![alt text](image-42.png)
 
 1. copy what cw said 
@@ -298,7 +323,6 @@ SAS L2"
 4. add the sd
 
 # Reallocate task to caseworker
-
 ![alt text](image-44.png)
 
 ![alt text](image-46.png)
@@ -309,10 +333,52 @@ SAS L2"
 4. add the sd
 
 # Unable to remove task
-
 ![alt text](image-45.png)
 
 1. copy what cw said 
 2. .cwsaid
 3. send to PA atlas
 4. add the sd
+
+# Missing docs
+![alt text](image-51.png)
+
+1. resolve with .triscans
+
+# PVs and SPVs ()
+## example 1
+![alt text](<image copy.png>)
+1. short sla so must be done quickly
+2. the team thsi is for is not on service 
+3. message laura chisom - homeoffice emplypee responsible for on boarding 
+
+## example 2 
+![alt text](<image-1 copy.png>)
+1. check the event history - looks like stuck in ris
+2. checkcorrids - stuck in ris
+3. good thing to do for SPVs - sddetails should say priority or something 
+4. this is curtailment - not prority
+5. if this was an SPV - no ris done in a day then it's stuck in 
+6. this is a normal ticket - it's still wihtin the normal ris time frame (look at checksdcorrids dates) so theres nothing accenture can do, rory is waiting to see what to do next
+
+![alt text](image-47.png)
+
+## example 3
+1. check sddetails 
+2. if not SPV - tag **not spv** same for pvs
+
+## exmaple of a PV 
+
+![alt text](image-48.png)
+
+![alt text](image-49.png)
+
+1. check ssb - weird ssb errors, probably due to an outage or something (IPT-00)
+2. resend them all 
+3. theyve cleared - event histoory agian and the application has progressed
+4. resolve
+5. rory uses is run all script and it runs all the scripts he's written
+
+![alt text](image-50.png)
+
+6. they check all the apps with that ssb error -> creates a file that lists them -> checks the ones that have timed out -> creates a list of uans that have been stuck -> searches the uan to find the resend id and creates a file -> resend script sends resends every 20 seconds
