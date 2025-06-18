@@ -215,7 +215,24 @@
 ![alt text](image-53.png)
 
 4. if yes, copy the deets and send to accenture telling them to link the enrolment
+
+Hi, 
+
+Can you please link this enrolment - UERN: 45547705 Case Type: 13, to the application below?
+
+Kind regards,
+L2
+
 5. if not, close and ask cw to enroll
+6. Hi,
+
+There is no enrolment, please re-enroll.
+
+Should problems persist, please contact the ITnow Service Desk.
+Please provide as much information as possible for SAS L2 to investigate further.
+
+Thank you,
+L2
 
 
 
@@ -268,11 +285,7 @@
 ## Grey task 
  .ssbe
 
-# SPVs and PVs
-1. they have their own queue
-
 # HOPS 
-
 ## Passport triscans missing from HOPS/ Documents missing?
 
 ![alt text](image-35.png)
@@ -345,7 +358,28 @@ SAS L2"
 
 1. resolve with .triscans
 
-# PVs and SPVs ()
+
+# Correct wrong sponser
+![alt text](image-54.png)
+1. assigned wrong sponder person to case
+2. send to pa 
+
+![alt text](image-55.png)
+
+# ID verification not on atlas INC4946249 
+![alt text](image-56.png)
+1. asked the chat if theres an enrolment 
+2. the chat says no 
+3. send to deloitte and ask if there is an issue with the submission
+4. -
+
+# Case did not progress to print queue after decide task was completed
+![alt text](image-57.png)
+1. check if any errors
+2. if no send to pa
+3. .cwsaid
+
+# PVs and SPVs 
 ## example 1
 ![alt text](<image copy.png>)
 1. short sla so must be done quickly
@@ -375,7 +409,7 @@ SAS L2"
 
 1. check ssb - weird ssb errors, probably due to an outage or something (IPT-00)
 2. resend them all 
-3. theyve cleared - event histoory agian and the application has progressed
+3. theyve cleared - event history agian and the application has progressed
 4. resolve
 5. rory uses is run all script and it runs all the scripts he's written
 
