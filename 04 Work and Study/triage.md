@@ -2,7 +2,8 @@
 # to start
 1. cmd `source bash_profile` in home direc
 2. `export VAULT_ADDR=https://vault-elb.service.pr.iptho.co.uk:443 && vault login -method=ldap username=nimota.ogunwoolu` - use LDAP password
-3. use `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"` to use the atlas toolbox 
+3. `sh ssb_db_tunnel.sh`
+4. use `export PATH="/Users/nimota.ogunwoolu/.local/bin:$PATH"` to use the atlas toolbox 
 
 # to end
 1. git push (if changed PAT) - username `N-AO5` and password is your personal access token 
@@ -46,6 +47,7 @@
 - .triscans (resolve)
 - .authhops (get hops permissions again)
 - .chase1 (cw chase 1)
+- .reenroll (cw reenroll when no bios)
 
 
 # Tags 
@@ -224,16 +226,7 @@ Kind regards,
 L2
 
 5. if not, close and ask cw to enroll
-6. Hi,
-
-There is no enrolment, please re-enroll.
-
-Should problems persist, please contact the ITnow Service Desk.
-Please provide as much information as possible for SAS L2 to investigate further.
-
-Thank you,
-L2
-
+6. .reenroll
 
 
 
