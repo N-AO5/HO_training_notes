@@ -48,6 +48,8 @@
 - .authhops (get hops permissions again)
 - .chase1 (cw chase 1)
 - .reenroll (cw reenroll when no bios)
+- .dochops (doc deletion, resolve)
+- .userhops (user access, resolve)
 
 
 # Tags 
@@ -299,6 +301,16 @@ Should problems persist, please contact the ITNow Service Desk and we shall ende
 
 Thanks,
 SAS L2"
+
+## Docs need deleting from HOPS
+1. assign to self and change to in progress -> save
+2. resolve .dochops
+3. if they re open .dochops1
+
+## No access to HOPS 
+1. assign to self and change to in progress -> save
+2. resolve .authhops
+
 
 # No bios have been linked to ATLAS
 ![alt text](image-39.png)
