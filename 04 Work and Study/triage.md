@@ -351,7 +351,7 @@ SAS L2"
 1. copy what cw said 
 2. .cwsaid
 3. send to PA atlas
-4. add the sd
+4. add the service celivery details
 
 # Unable to remove task
 ![alt text](image-45.png)
