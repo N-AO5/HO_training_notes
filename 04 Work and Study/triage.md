@@ -12,10 +12,11 @@
 1. to get the repo `git clone ssh://git@bitbucket.bics-collaboration.homeoffice.gov.uk/lso/lso-scripts.git`
 2. cd lso-scripts
 3. cd ssb_tunnel_scripts
-4. `sh ssb_db_tunnel.sh`
-5. test with `sh search_all.sh [UAN]` if doesnt work do step 4 again
-6. use `sh resend/resend_failed_message_id.sh [error code]` to resend an error
-7. DO NOT RESEND DUPLICATE ENROLMENT SSB ERRORS
+4. `export VAULT_ADDR=https://vault-elb.service.pr.iptho.co.uk:443 && vault login -method=ldap username=nimota.ogunwoolu` - use LDAP password
+5. `sh ssb_db_tunnel.sh`
+6. test with `sh search_all.sh [UAN]` if doesnt work do step 4 again
+7. use `sh resend/resend_failed_message_id.sh [error code]` to resend an error
+8. DO NOT RESEND DUPLICATE ENROLMENT SSB ERRORS
 
 # Commands 
 - `uan2eventhis [UAN]` event history 
@@ -48,8 +49,9 @@
 - .authhops (get hops permissions again)
 - .chase1 (cw chase 1)
 - .reenroll (cw reenroll when no bios)
-- .dochops (doc deletion, resolve)
-- .userhops (user access, resolve)
+- .dochops (doc deletion on hops, resolve)
+- .userhops (user access on hops, resolve)
+- .sys (stuck in sys user, no ris stuck, pa)
 
 
 # Tags 
@@ -122,6 +124,7 @@
 4. .missingapp
 5. tag **ws-missingapp**
 
+
 # oops error
 1. do `uan2eventhis` 
 2. decison should say "TASK_COMPLETED"
@@ -163,11 +166,11 @@
 
 # no task
 
-## no error found for app stuck 
+## no error found for app stuck (stuck in system user)
 1. check the url given by cw (copy after the /Caseworking, paste in normal atlas address in same spot)
 2. check ssb -> no error
 3. check ris check -> no ris stuck
-4. escalate to pa consulting 
+4. escalate to pa consulting - tell them you checked ris .sys
 
 ![alt text](image-27.png)
 
@@ -383,6 +386,21 @@ SAS L2"
 1. check if any errors
 2. if no send to pa
 3. .cwsaid
+
+# 502 bad gateway
+1. send to pa
+2. .cwsaid
+
+
+# Sponser Bio checks expired
+![alt text](image-58.png)
+1. checked on event history and atlas
+
+![alt text](image-59.png)
+
+2. send to accenture - they will re do them
+
+
 
 # PVs and SPVs 
 ## example 1
