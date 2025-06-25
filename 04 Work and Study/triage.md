@@ -143,6 +143,48 @@
 12. escalate to PA consulting atlas - .esclate
 13. tag **ws-oopserror**
 
+# "Unexpected character" oops error
+1. search on kibana
+2. add severity and message 
+3. open up all the little arrows
+
+![alt text](image-60.png)
+
+4. cmd + F the caused by to find the information
+
+![alt text](image-61.png)
+
+5. on terminal use `uan2eventhis` 
+6. copy the path
+
+![alt text](image-62.png)
+
+7. open up finder and cmd + shift + G and paste the path for the file
+8. open it up in vscode or a text editor
+9. cmd + find and search the sentence that was in the error
+10. within that event history 
+11. Due to unescaped characters needs updated to \\\ rather than one \
+
+Example:
+Before the \"escaped character looked like this
+Before the \\\" escaped character looked like this
+
+12. do this for both end of the sentence 
+
+![alt text](image-63.png)
+
+13. find where it collapses and cheange the date by one second at the top and at the bottom
+
+![alt text](image-64.png)
+
+14. collaopse the the section that the changes were made and copy 
+
+![alt text](image-65.png)
+
+15.  Copy the whole file, paste in this swagger page (click try it out) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005 
+16.  Execute and the code should be 200
+
+![alt text](image-66.png)
 
 
 # Handle fulfill exceptions 
@@ -309,6 +351,7 @@ SAS L2"
 1. assign to self and change to in progress -> save
 2. resolve .dochops
 3. if they re open .dochops1
+4. if theey re opne AGAIN .dochops2
 
 ## No access to HOPS 
 1. assign to self and change to in progress -> save
@@ -439,3 +482,5 @@ SAS L2"
 ![alt text](image-50.png)
 
 6. they check all the apps with that ssb error -> creates a file that lists them -> checks the ones that have timed out -> creates a list of uans that have been stuck -> searches the uan to find the resend id and creates a file -> resend script sends resends every 20 seconds
+
+
