@@ -276,11 +276,6 @@ L2
 6. .reenroll
 
 
-
-
-
-
-
 # FES STUFF w Alez Lams
 - DLQ dead letter queue - Means the messages were send but not rcieved and therefore end up in the DLQ 
 - SQS - simple message queues on amazon

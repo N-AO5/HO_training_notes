@@ -29,6 +29,6 @@
 
 ![alt text](image-5.png)
 
-12. Copy the whole file, paste in this swagger page (click try it out)) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005
+12. Copy the whole file, paste in this swagger page (click try it out) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005
 13.  Execute and the code should be 200
 14.  Go to the psv and the menu should now have more options - resolve
