@@ -71,7 +71,7 @@
 - WS-SysUser
 - **WS-RIS-Stuck** - incomplete ris checks (esclate to acccenture)
 - WS-RIS-ExtEnr - external_enrolment-past_deadline -> resolve case
-- **WS-NoRIS** - no ris checks requested 
+- **WS-NoRIS** - no ris checks requested (PA_)
 - **WS-Bios** - resolved tickets 
 - WS-RI-Person
 - WS-RI-Group
@@ -211,8 +211,9 @@ Before the \\\" escaped character looked like this
 ## no error found for app stuck (stuck in system user)
 1. check the url given by cw (copy after the /Caseworking, paste in normal atlas address in same spot)
 2. check ssb -> no error
-3. check ris check -> no ris stuck
-4. escalate to pa consulting - tell them you checked ris .sys
+3. check ris check -> no ris stuck (if ris done recently but incomplte - still send to pa)
+4. says 'COMPLETE_FURTHER_ACTION' but theres no further action task
+5. escalate to pa consulting - tell them you checked ris .sys
 
 ![alt text](image-27.png)
 
@@ -437,6 +438,17 @@ SAS L2"
 ![alt text](image-59.png)
 
 2. send to accenture - they will re do them
+
+# Case on CID has not been migrated to Atlas properly. 
+
+![alt text](image-67.png)
+
+1. check that the application is NOT outside of the 240 day retention period using the jenkins job - https://accessuk-support-jenkins-dtzo-kops1.service.ops.iptho.co.uk/job/tooling-jobs/job/tooling-application_search/
+2. if not, send to Deloite
+
+![alt text](image-68.png)
+
+3. 
 
 
 
