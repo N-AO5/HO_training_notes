@@ -39,7 +39,7 @@
 - .pp (if problems persist resolve)
 - .deadline (External Enrolment Past Deadline event resolve)
 - .noclearexcep (exeption that won't clear - pa atlas)
-- .noexcep (no exception to clear)
+- .noexcep (no exception to clear) - RIS vertical (open up the exception - send to PA)
 - .further (further action overdue)
 - .risexpired (ris expired - send to accenture)
 - .risstuck (ris stuck - send to accenture)
@@ -146,11 +146,11 @@
 # "Unexpected character" oops error
 1. search on kibana
 2. add severity and message 
-3. open up all the little arrows
+3. open up the MS-CHECK-VALIDATE little arrow
 
-![alt text](image-60.png)
+![alt text](image-70.png)
 
-4. cmd + F the caused by to find the information
+4. cmd + F the caused by to find the information (code: 73, 100 )
 
 ![alt text](image-61.png)
 

@@ -16,6 +16,7 @@
 - [Payment tickets](#payment-tickets)
     - [Scenerio - Refund after IHS payment](#scenerio---refund-after-ihs-payment)
     - [Scenerio - incorrect RTW/RTR](#scenerio---incorrect-rtwrtr)
+    - [Scenerio - old grant showing on view and prove](#scenerio---old-grant-showing-on-view-and-prove)
 
 # Numbers and where they go
 
@@ -37,7 +38,7 @@ DELOITTE -> issues progressing with payment applications
 ## Login 
  1. use your username `firstname.lastname`
  2. password is workspace password from PASS
- 3. use phone MFA 
+ 3. use phone workspaces MFA 
  4. when in, click the padlock at the bottom left of the desk top 
 ![alt text](image.png)
 5. navigate to `ho-it-live`
