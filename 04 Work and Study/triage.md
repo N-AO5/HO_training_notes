@@ -1,3 +1,53 @@
+- [to start](#to-start)
+- [to end](#to-end)
+- [SSB](#ssb)
+- [Commands](#commands)
+- [shortcuts](#shortcuts)
+- [Tags](#tags)
+- [Typical Event History](#typical-event-history)
+- [PVs and SPVs](#pvs-and-spvs)
+  - [example 1](#example-1)
+  - [example 2](#example-2)
+  - [example 3](#example-3)
+  - [exmaple of a PV](#exmaple-of-a-pv)
+- [not for work and study (eg. cannot attatch photo, change expiry date on visa)](#not-for-work-and-study-eg-cannot-attatch-photo-change-expiry-date-on-visa)
+- [de-merge](#de-merge)
+- [duplicate enrolment](#duplicate-enrolment)
+- [reopen application](#reopen-application)
+- [missing app](#missing-app)
+- [oops error](#oops-error)
+- ["Unexpected character" oops error](#unexpected-character-oops-error)
+- [Handle fulfill exceptions](#handle-fulfill-exceptions)
+  - [issue -\> simple error. They forgot to put city wrong, DOB correctly. Applicant error not system.](#issue---simple-error-they-forgot-to-put-city-wrong-dob-correctly-applicant-error-not-system)
+- [Fbis Fulfilment Exception](#fbis-fulfilment-exception)
+- [no task](#no-task)
+  - [no error found for app stuck (stuck in system user)](#no-error-found-for-app-stuck-stuck-in-system-user)
+  - [stuck on further action](#stuck-on-further-action)
+  - [ssb error - no biometric enrolment](#ssb-error---no-biometric-enrolment)
+  - [expired ris checks](#expired-ris-checks)
+  - [ris checks haven't started](#ris-checks-havent-started)
+- [no bios - if no resolve send to accenture](#no-bios---if-no-resolve-send-to-accenture)
+  - [no bios linked through on ATLAS, no ID Verification files in ATLAS](#no-bios-linked-through-on-atlas-no-id-verification-files-in-atlas)
+- [FES STUFF w Alez Lams](#fes-stuff-w-alez-lams)
+  - [Grey task](#grey-task)
+- [HOPS](#hops)
+  - [Passport triscans missing from HOPS/ Documents missing?](#passport-triscans-missing-from-hops-documents-missing)
+  - [Docs need deleting from HOPS](#docs-need-deleting-from-hops)
+  - [No access to HOPS](#no-access-to-hops)
+- [SEND TO PA](#send-to-pa)
+  - [Notification needs to be triggered](#notification-needs-to-be-triggered)
+  - [Caseworker cannot choose a service delivery](#caseworker-cannot-choose-a-service-delivery)
+  - [Reallocate task to caseworker](#reallocate-task-to-caseworker)
+  - [Unable to remove task](#unable-to-remove-task)
+- [Correct wrong sponser](#correct-wrong-sponser)
+  - [Case did not progress to print queue after decide task was completed](#case-did-not-progress-to-print-queue-after-decide-task-was-completed)
+- [502 bad gateway](#502-bad-gateway)
+  - [Missing docs](#missing-docs)
+  - [delete tasks](#delete-tasks)
+- [ID verification not on atlas INC4946249](#id-verification-not-on-atlas-inc4946249)
+- [Sponser Bio checks expired](#sponser-bio-checks-expired)
+- [Case on CID has not been migrated to Atlas properly.](#case-on-cid-has-not-been-migrated-to-atlas-properly)
+  - [ePMS drop down option missing](#epms-drop-down-option-missing)
 
 # to start
 1. cmd `source bash_profile` in home direc
@@ -39,7 +89,7 @@
 - .pp (if problems persist resolve)
 - .deadline (External Enrolment Past Deadline event resolve)
 - .noclearexcep (exeption that won't clear - pa atlas)
-- .noexcep (no exception to clear) - RIS vertical (open up the exception - send to PA)
+- .noexcep (no exception to clear) -  (open up the exception vertical = RIS - send to PA)
 - .further (further action overdue)
 - .risexpired (ris expired - send to accenture)
 - .risstuck (ris stuck - send to accenture)
@@ -92,6 +142,44 @@
 5. Ready for consider/ Ready for reconsider (main thing you should see)
 6. When its reconsider registration -> go back and check RIS(expire in 2month), check Sdcorrelation (command checkSDCorrIDs [service delivery ID])
 7. Service delivery complete. (sometimes not showing)
+
+# PVs and SPVs 
+## example 1
+![alt text](<image copy.png>)
+1. short sla so must be done quickly
+2. the team thsi is for is not on service 
+3. message laura chisom - homeoffice emplypee responsible for on boarding 
+
+## example 2 
+![alt text](<image-1 copy.png>)
+1. check the event history - looks like stuck in ris
+2. checkcorrids - stuck in ris
+3. good thing to do for SPVs - sddetails should say priority or something 
+4. this is curtailment - not prority
+5. if this was an SPV - no ris done in a day then it's stuck in 
+6. this is a normal ticket - it's still wihtin the normal ris time frame (look at checksdcorrids dates) so theres nothing accenture can do, rory is waiting to see what to do next
+
+![alt text](image-47.png)
+
+## example 3
+1. check sddetails 
+2. if not SPV - tag **not spv** same for pvs
+
+## exmaple of a PV 
+
+![alt text](image-48.png)
+
+![alt text](image-49.png)
+
+1. check ssb - weird ssb errors, probably due to an outage or something (IPT-00)
+2. resend them all 
+3. theyve cleared - event history agian and the application has progressed
+4. resolve
+5. rory uses is run all script and it runs all the scripts he's written
+
+![alt text](image-50.png)
+
+6. they check all the apps with that ssb error -> creates a file that lists them -> checks the ones that have timed out -> creates a list of uans that have been stuck -> searches the uan to find the resend id and creates a file -> resend script sends resends every 20 seconds
 
 # not for work and study (eg. cannot attatch photo, change expiry date on visa)
 
@@ -150,7 +238,7 @@
 
 ![alt text](image-70.png)
 
-4. cmd + F the caused by to find the information (code: 73, 100 )
+4. cmd + F the caused by to find the information (code: 73, 100, 84, 69 )
 
 ![alt text](image-61.png)
 
@@ -161,7 +249,7 @@
 
 7. open up finder and cmd + shift + G and paste the path for the file
 8. open it up in vscode or a text editor
-9. cmd + find and search the sentence that was in the error
+9. cmd + find and search the sentence that was in the error MUST BE CANCELLLATION REQUREST
 10. within that event history 
 11. Due to unescaped characters needs updated to \\\ rather than one \
 
@@ -173,16 +261,16 @@ Before the \\\" escaped character looked like this
 
 ![alt text](image-63.png)
 
-13. find where it collapses and cheange the date by one second at the top and at the bottom
+13. find where it collapses (77) and cheange the date by one second at the top and at the bottom
 
 ![alt text](image-64.png)
 
-14. collaopse the the section that the changes were made and copy 
+14. collapse the the section that the changes were made and copy 
 
 ![alt text](image-65.png)
 
-15.  Copy the whole file, paste in this swagger page (click try it out) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005 
-16.  Execute and the code should be 200
+1.   paste in this swagger page (click try it out) - https://ipt-ingestion-services-prd1-prd1.service.pr.iptho.co.uk/dataplatform-services/api-doc/#/Event%20History%20V3%20APIs/DPS-EVENT-PUT-005 
+2.   Execute and the code should be 200
 
 ![alt text](image-66.png)
 
@@ -345,35 +433,23 @@ SAS L2"
 
 ## Docs need deleting from HOPS
 1. assign to self and change to in progress -> save
-2. resolve .dochops
-3. if they re open .dochops1
-4. if theey re opne AGAIN .dochops2
+2. resolve .dochops2
 
 ## No access to HOPS 
 1. assign to self and change to in progress -> save
 2. resolve .authhops
 
 
-# No bios have been linked to ATLAS
-![alt text](image-39.png)
-1. go to case on atlas (cmd f)
-2. application
-3. this example has been resolved -
+# SEND TO PA
 
-![alt text](image-41.png)
-
-4.  but if not - ask Fatima from help 
-
-![alt text](image-38.png)
-
-# Notification needs to be triggered 
+## Notification needs to be triggered 
 ![alt text](image-42.png)
 
 1. copy what cw said 
 2. send to PA atlas
 3. add the sd
 
-# Caseworker cannot choose a service delivery
+## Caseworker cannot choose a service delivery
 
 ![alt text](image-43.png)
 
@@ -382,7 +458,7 @@ SAS L2"
 3. send to PA atlas
 4. add the sd
 
-# Reallocate task to caseworker
+## Reallocate task to caseworker
 ![alt text](image-44.png)
 
 ![alt text](image-46.png)
@@ -392,19 +468,13 @@ SAS L2"
 3. send to PA atlas
 4. add the service celivery details
 
-# Unable to remove task
+## Unable to remove task
 ![alt text](image-45.png)
 
 1. copy what cw said 
 2. .cwsaid
 3. send to PA atlas
 4. add the sd
-
-# Missing docs
-![alt text](image-51.png)
-
-1. resolve with .triscans
-
 
 # Correct wrong sponser
 ![alt text](image-54.png)
@@ -413,14 +483,7 @@ SAS L2"
 
 ![alt text](image-55.png)
 
-# ID verification not on atlas INC4946249 
-![alt text](image-56.png)
-1. asked the chat if theres an enrolment 
-2. the chat says no 
-3. send to deloitte and ask if there is an issue with the submission
-4. -
-
-# Case did not progress to print queue after decide task was completed
+## Case did not progress to print queue after decide task was completed
 ![alt text](image-57.png)
 1. check if any errors
 2. if no send to pa
@@ -428,8 +491,23 @@ SAS L2"
 
 # 502 bad gateway
 1. send to pa
-2. .cwsaid
+2. .cwsai
 
+## Missing docs
+![alt text](image-51.png)
+
+1. resolve with .triscans
+
+## delete tasks
+
+1. resolve .deltask
+
+# ID verification not on atlas INC4946249 
+![alt text](image-56.png)
+1. asked the chat if theres an enrolment 
+2. the chat says no 
+3. send to deloitte and ask if there is an issue with the submission
+4. -
 
 # Sponser Bio checks expired
 ![alt text](image-58.png)
@@ -448,46 +526,22 @@ SAS L2"
 
 ![alt text](image-68.png)
 
-3. 
+## ePMS drop down option missing
+
+![alt text](image-71.png)
+
+1. email to ePMSSupportRequests@homeoffice.gov.uk,  CC.  Daniel.Webster3@homeoffice.gov.uk
+2. state all the details, so username, contact information, description of problem that drop down menu is missing.  
+3. include the incident number
+
+![alt text](image-72.png)
+
+4. They should then email you back stating they’re made profile changes after wards user can test and confirm if working.
+5. then do an awaitng info for cw to say to fixed 
+6. resolve
 
 
 
-# PVs and SPVs 
-## example 1
-![alt text](<image copy.png>)
-1. short sla so must be done quickly
-2. the team thsi is for is not on service 
-3. message laura chisom - homeoffice emplypee responsible for on boarding 
 
-## example 2 
-![alt text](<image-1 copy.png>)
-1. check the event history - looks like stuck in ris
-2. checkcorrids - stuck in ris
-3. good thing to do for SPVs - sddetails should say priority or something 
-4. this is curtailment - not prority
-5. if this was an SPV - no ris done in a day then it's stuck in 
-6. this is a normal ticket - it's still wihtin the normal ris time frame (look at checksdcorrids dates) so theres nothing accenture can do, rory is waiting to see what to do next
-
-![alt text](image-47.png)
-
-## example 3
-1. check sddetails 
-2. if not SPV - tag **not spv** same for pvs
-
-## exmaple of a PV 
-
-![alt text](image-48.png)
-
-![alt text](image-49.png)
-
-1. check ssb - weird ssb errors, probably due to an outage or something (IPT-00)
-2. resend them all 
-3. theyve cleared - event history agian and the application has progressed
-4. resolve
-5. rory uses is run all script and it runs all the scripts he's written
-
-![alt text](image-50.png)
-
-6. they check all the apps with that ssb error -> creates a file that lists them -> checks the ones that have timed out -> creates a list of uans that have been stuck -> searches the uan to find the resend id and creates a file -> resend script sends resends every 20 seconds
 
 
