@@ -10,7 +10,8 @@
   - [example 2](#example-2)
   - [example 3](#example-3)
   - [exmaple of a PV](#exmaple-of-a-pv)
-- [not for work and study (eg. cannot attatch photo, change expiry date on visa)](#not-for-work-and-study-eg-cannot-attatch-photo-change-expiry-date-on-visa)
+- [not for work and study (eg. cannot attatch photo, change expiry date on visa )](#not-for-work-and-study-eg-cannot-attatch-photo-change-expiry-date-on-visa-)
+  - [also we don't do BRP anymmore - dead route](#also-we-dont-do-brp-anymmore---dead-route)
 - [de-merge](#de-merge)
 - [duplicate enrolment](#duplicate-enrolment)
 - [reopen application](#reopen-application)
@@ -24,6 +25,7 @@
   - [no error found for app stuck (stuck in system user)](#no-error-found-for-app-stuck-stuck-in-system-user)
   - [stuck on further action](#stuck-on-further-action)
   - [ssb error - no biometric enrolment](#ssb-error---no-biometric-enrolment)
+  - [ssb error - no SD](#ssb-error---no-sd)
   - [expired ris checks](#expired-ris-checks)
   - [ris checks haven't started](#ris-checks-havent-started)
 - [no bios - if no resolve send to accenture](#no-bios---if-no-resolve-send-to-accenture)
@@ -102,6 +104,7 @@
 - .dochops (doc deletion on hops, resolve)
 - .userhops (user access on hops, resolve)
 - .sys (stuck in sys user, no ris stuck, pa)
+- .linkbios (bios but not linked to app, escalate accenture)
 
 
 # Tags 
@@ -173,7 +176,7 @@
 
 1. check ssb - weird ssb errors, probably due to an outage or something (IPT-00)
 2. resend them all 
-3. theyve cleared - event history agian and the application has progressed
+3. theyve cleared - event history again and the application has progressed
 4. resolve
 5. rory uses is run all script and it runs all the scripts he's written
 
@@ -181,13 +184,15 @@
 
 6. they check all the apps with that ssb error -> creates a file that lists them -> checks the ones that have timed out -> creates a list of uans that have been stuck -> searches the uan to find the resend id and creates a file -> resend script sends resends every 20 seconds
 
-# not for work and study (eg. cannot attatch photo, change expiry date on visa)
+# not for work and study (eg. cannot attatch photo, change expiry date on visa )
 
 ![alt text](image-40.png)
 
 1. go to slack channel #sas-tranche-1-2-3
 2. "@sas_im_team [INC number] - The ticket is not for work and study, can this be reassigned?"
 3. remove name from assigned on ticket 
+
+## also we don't do BRP anymmore - dead route
 
 # de-merge
 1. send the INC number to the #merge-identity-queries
@@ -331,6 +336,13 @@ Before the \\\" escaped character looked like this
 13. check psv as well - go into the grant - case details - application serice delivery details 
 14. tag as **ws-bios**
 
+## ssb error - no SD
+![alt text](image-73.png)
+
+1. do ssb and the error should match what cw said
+2. run `uan2eventhis` - if there is no sd, send to deloitte
+3. if there is, send to PA and ask them to resubmit the case with the UAN the C/W provided
+
 ## expired ris checks
 1. check `uan2eventhis`
 2. ris checks appear completed
@@ -347,20 +359,16 @@ Before the \\\" escaped character looked like this
 ## no bios linked through on ATLAS, no ID Verification files in ATLAS
 ![alt text](image-52.png)
 1. check atlas -> open the application -> if there biometric enrolment? -> resolve
-2. if not check facial images (if one says BRP - send to accenture, see fatima for message) 
-3. message the group chat to see if the enrolment does exist
+2. if biometric enrolment is timedout ->
+
+![alt text](image-74.png)
+
+3. if not check facial images (if one says BRP - send to accenture, see fatima for message) 
+4. message the group chat to see if the enrolment does exist
 
 ![alt text](image-53.png)
 
-4. if yes, copy the deets and send to accenture telling them to link the enrolment
-
-Hi, 
-
-Can you please link this enrolment - UERN: 45547705 Case Type: 13, to the application below?
-
-Kind regards,
-L2
-
+4. if yes, copy the deets and send to accenture telling them to link the enrolment .linkbios
 5. if not, close and ask cw to enroll
 6. .reenroll
 
