@@ -12,7 +12,7 @@
   - [exmaple of a PV](#exmaple-of-a-pv)
 - [not for work and study (eg. cannot attatch photo, change expiry date on visa )](#not-for-work-and-study-eg-cannot-attatch-photo-change-expiry-date-on-visa-)
   - [also we don't do BRP anymmore - dead route](#also-we-dont-do-brp-anymmore---dead-route)
-- [de-merge](#de-merge)
+- [de-merge (or incorrect photo)](#de-merge-or-incorrect-photo)
 - [duplicate enrolment](#duplicate-enrolment)
 - [reopen application](#reopen-application)
 - [missing app](#missing-app)
@@ -23,6 +23,7 @@
 - [Fbis Fulfilment Exception](#fbis-fulfilment-exception)
 - [no task](#no-task)
   - [no error found for app stuck (stuck in system user)](#no-error-found-for-app-stuck-stuck-in-system-user)
+  - [Reallocate task to caseworker](#reallocate-task-to-caseworker)
   - [stuck on further action](#stuck-on-further-action)
   - [ssb error - no biometric enrolment](#ssb-error---no-biometric-enrolment)
   - [ssb error - no SD](#ssb-error---no-sd)
@@ -39,17 +40,18 @@
 - [SEND TO PA](#send-to-pa)
   - [Notification needs to be triggered](#notification-needs-to-be-triggered)
   - [Caseworker cannot choose a service delivery](#caseworker-cannot-choose-a-service-delivery)
-  - [Reallocate task to caseworker](#reallocate-task-to-caseworker)
   - [Unable to remove task](#unable-to-remove-task)
-- [Correct wrong sponser](#correct-wrong-sponser)
+  - [Correct wrong sponser](#correct-wrong-sponser)
   - [Case did not progress to print queue after decide task was completed](#case-did-not-progress-to-print-queue-after-decide-task-was-completed)
-- [502 bad gateway](#502-bad-gateway)
+  - [502 bad gateway](#502-bad-gateway)
   - [Missing docs](#missing-docs)
-  - [delete tasks](#delete-tasks)
+  - [CID case has not been migrated to Atlas](#cid-case-has-not-been-migrated-to-atlas)
+- [delete tasks](#delete-tasks)
 - [ID verification not on atlas INC4946249](#id-verification-not-on-atlas-inc4946249)
 - [Sponser Bio checks expired](#sponser-bio-checks-expired)
 - [Case on CID has not been migrated to Atlas properly.](#case-on-cid-has-not-been-migrated-to-atlas-properly)
-  - [ePMS drop down option missing](#epms-drop-down-option-missing)
+- [ePMS drop down option missing](#epms-drop-down-option-missing)
+- [Bio reuse case](#bio-reuse-case)
 
 # to start
 1. cmd `source bash_profile` in home direc
@@ -82,11 +84,11 @@
 # shortcuts
 - .missingapp (missing application escalate)
 - .ssberror (ssberror resolve)
-- .ssbe (ssberror escalate - accenture)
+- .ssbe (ssberror escalate - accenture) - timedout enrolment pa
 - .retry (retried exception resolve)
 - .resubapp (resubmit app resolve)
 - .notask (no task escalate)
-- .oops (oops error escalate )
+- .oops (oops error escalate pa  )
 - .escalate (escalate comment)
 - .pp (if problems persist resolve)
 - .deadline (External Enrolment Past Deadline event resolve)
@@ -105,6 +107,8 @@
 - .userhops (user access on hops, resolve)
 - .sys (stuck in sys user, no ris stuck, pa)
 - .linkbios (bios but not linked to app, escalate accenture)
+- .merge (de-merge, escalate HODDaT - IBM Managed Identities)
+- .reassign (reassign task, escalate to pa)
 
 
 # Tags 
@@ -121,10 +125,10 @@
 - WS-Notification-Issue
 - Not-WS
 - **WS-No-Issue** - no issue
-- WS-SysUser
+- **WS-SysUser** - stuck in system user, ris check completed - PA,
 - **WS-RIS-Stuck** - incomplete ris checks (esclate to acccenture)
 - WS-RIS-ExtEnr - external_enrolment-past_deadline -> resolve case
-- **WS-NoRIS** - no ris checks requested (PA_)
+- **WS-NoRIS** - no ris checks requested (PA)
 - **WS-Bios** - resolved tickets 
 - WS-RI-Person
 - WS-RI-Group
@@ -194,13 +198,16 @@
 
 ## also we don't do BRP anymmore - dead route
 
-# de-merge
+# de-merge (or incorrect photo)
+1. if the picture is of someone else either the C/W has uploaded the wrong photo
+2. OR there has been an incorrect merge
+
 1. send the INC number to the #merge-identity-queries
 2. copy in your inc number
 3. copy the supplier ref that they give as a reply
 4. add to supplier ref box in main details of the ticket
 5. send to "HODDaT - IBM Managed Identities - INC"
-6. ask them to investigate the potential merge
+6. ask them to investigate the potential merge merger
 7.  **ws-merge**
 
 # duplicate enrolment 
@@ -283,7 +290,7 @@ Before the \\\" escaped character looked like this
 # Handle fulfill exceptions 
 ## issue -> simple error. They forgot to put city wrong, DOB correctly. Applicant error not system.
 
-1. Put the UAN on tasklist 
+1. Put the UAN on tasklist if uan brings nothing search their name 
 2. copy the entire exception and paste in wn - REMOVE THE NAME 
 3. fix the formatting 
 4. get the `sddetails [SD]` fom terminal 
@@ -304,13 +311,22 @@ Before the \\\" escaped character looked like this
 ## no error found for app stuck (stuck in system user)
 1. check the url given by cw (copy after the /Caseworking, paste in normal atlas address in same spot)
 2. check ssb -> no error
-3. check ris check -> no ris stuck (if ris done recently but incomplte - still send to pa)
+3. check ris check -> no ris stuck (if ris done recently but incomplete - still send to pa) [alex said reply to cw saying - message the C/W saying that they need to get in contact with the idops team (another casworking team) to expedite these ]
 4. says 'COMPLETE_FURTHER_ACTION' but theres no further action task
 5. escalate to pa consulting - tell them you checked ris .sys
 
 ![alt text](image-27.png)
 
-5. .escalate
+7. .escalate
+
+## Reallocate task to caseworker
+![alt text](image-44.png)
+
+![alt text](image-46.png)
+
+1. .reaasign
+2. send to PA atlas
+3. add the service celivery details
 
 ## stuck on further action 
 1. check `uan2eventhis [UAN]`
@@ -359,10 +375,11 @@ Before the \\\" escaped character looked like this
 ## no bios linked through on ATLAS, no ID Verification files in ATLAS
 ![alt text](image-52.png)
 1. check atlas -> open the application -> if there biometric enrolment? -> resolve
-2. if biometric enrolment is timedout ->
 
 ![alt text](image-74.png)
 
+2. if biometric enrolment is timedout -> check ssb -> if there is a timedout enrolment on ssb replay it
+3. if its a late enrol, resolve with the message above
 3. if not check facial images (if one says BRP - send to accenture, see fatima for message) 
 4. message the group chat to see if the enrolment does exist
 
@@ -466,15 +483,7 @@ SAS L2"
 3. send to PA atlas
 4. add the sd
 
-## Reallocate task to caseworker
-![alt text](image-44.png)
 
-![alt text](image-46.png)
-
-1. copy what cw said 
-2. .cwsaid
-3. send to PA atlas
-4. add the service celivery details
 
 ## Unable to remove task
 ![alt text](image-45.png)
@@ -484,7 +493,7 @@ SAS L2"
 3. send to PA atlas
 4. add the sd
 
-# Correct wrong sponser
+## Correct wrong sponser
 ![alt text](image-54.png)
 1. assigned wrong sponder person to case
 2. send to pa 
@@ -497,7 +506,7 @@ SAS L2"
 2. if no send to pa
 3. .cwsaid
 
-# 502 bad gateway
+## 502 bad gateway
 1. send to pa
 2. .cwsai
 
@@ -506,8 +515,16 @@ SAS L2"
 
 1. resolve with .triscans
 
-## delete tasks
+## CID case has not been migrated to Atlas
 
+![alt text](image-75.png)
+
+1. send to pa
+2. say CID case that the CID case hasnt migrated
+3. add sddetails
+
+
+# delete tasks
 1. resolve .deltask
 
 # ID verification not on atlas INC4946249 
@@ -534,7 +551,8 @@ SAS L2"
 
 ![alt text](image-68.png)
 
-## ePMS drop down option missing
+
+# ePMS drop down option missing
 
 ![alt text](image-71.png)
 
@@ -548,6 +566,13 @@ SAS L2"
 5. then do an awaitng info for cw to say to fixed 
 6. resolve
 
+# Bio reuse case
+
+![alt text](image-76.png)
+
+![alt text](image-77.png)
+
+1. Send to accenture asking them to help with a bio reuse case
 
 
 
