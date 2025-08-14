@@ -28,9 +28,10 @@
   - [ssb error - no biometric enrolment](#ssb-error---no-biometric-enrolment)
   - [ssb error - no SD](#ssb-error---no-sd)
   - [expired ris checks](#expired-ris-checks)
-  - [ris checks haven't started](#ris-checks-havent-started)
+  - [ris checks/prs haven't started](#ris-checksprs-havent-started)
 - [no bios - if no resolve send to accenture](#no-bios---if-no-resolve-send-to-accenture)
   - [no bios linked through on ATLAS, no ID Verification files in ATLAS](#no-bios-linked-through-on-atlas-no-id-verification-files-in-atlas)
+- [IABS\_VERIFICATION\_ERROR](#iabs_verification_error)
 - [FES STUFF w Alez Lams](#fes-stuff-w-alez-lams)
   - [Grey task](#grey-task)
 - [HOPS](#hops)
@@ -46,7 +47,7 @@
   - [502 bad gateway](#502-bad-gateway)
   - [Missing docs](#missing-docs)
   - [CID case has not been migrated to Atlas](#cid-case-has-not-been-migrated-to-atlas)
-- [delete tasks](#delete-tasks)
+- [delete tasks/ cases (can send to pa if they can't)](#delete-tasks-cases-can-send-to-pa-if-they-cant)
 - [ID verification not on atlas INC4946249](#id-verification-not-on-atlas-inc4946249)
 - [Sponser Bio checks expired](#sponser-bio-checks-expired)
 - [Case on CID has not been migrated to Atlas properly.](#case-on-cid-has-not-been-migrated-to-atlas-properly)
@@ -366,7 +367,7 @@ Before the \\\" escaped character looked like this
 4. `psv [SD]` check the case and see the case card - ris checks done over 2 months ago t4 expired
 5. send to accenture
 
-## ris checks haven't started
+## ris checks/prs haven't started
 1. after checking event history, psv and ris checks
 2. send to PA consultant - add sddetails
 
@@ -388,6 +389,32 @@ Before the \\\" escaped character looked like this
 4. if yes, copy the deets and send to accenture telling them to link the enrolment .linkbios
 5. if not, close and ask cw to enroll
 6. .reenroll
+
+# IABS_VERIFICATION_ERROR
+
+1. no task so check the event history
+   
+![alt text](image-78.png)
+
+2. get the enrolment from the group chat
+3. send to Leidos - IABS - Incident Resolvers - INC
+4. resolve with:
+
+Hi,
+
+L2 have received this response from IDENT1, please see below.
+
+The IDENT1 searches timed out due to the P1 HO SDWAN network incident INC5143648. The timeout is the final response from IABS and the transaction has been housekept in line with our security requirements. The business process is for the IFB to manually process a new IDENT1 search and update the results manually on your systen. Alternatively you can re-enrol on IABS with a new UERN
+
+The IFB have no access to SNOW and can be contacted on email: yyfma-IFB@homeoffice.gov.uk
+
+This incident has now been marked as resolved
+
+Should problems persist, please contact the ITnow Service Desk.
+Please provide as much information as possible for SAS L2 to investigate further.
+
+Kind regards,
+L2
 
 
 # FES STUFF w Alez Lams
@@ -524,7 +551,7 @@ SAS L2"
 3. add sddetails
 
 
-# delete tasks
+# delete tasks/ cases (can send to pa if they can't)
 1. resolve .deltask
 
 # ID verification not on atlas INC4946249 
@@ -573,6 +600,7 @@ SAS L2"
 ![alt text](image-77.png)
 
 1. Send to accenture asking them to help with a bio reuse case
+
 
 
 
