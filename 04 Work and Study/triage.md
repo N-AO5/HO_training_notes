@@ -32,7 +32,8 @@
 - [no bios - if no resolve send to accenture](#no-bios---if-no-resolve-send-to-accenture)
   - [no bios linked through on ATLAS, no ID Verification files in ATLAS](#no-bios-linked-through-on-atlas-no-id-verification-files-in-atlas)
 - [IABS\_VERIFICATION\_ERROR](#iabs_verification_error)
-- [FES STUFF w Alez Lams](#fes-stuff-w-alez-lams)
+- [FES STUFF w Alez Lams - pt1](#fes-stuff-w-alez-lams---pt1)
+- [FES STUFF - pt2](#fes-stuff---pt2)
   - [Grey task](#grey-task)
 - [HOPS](#hops)
   - [Passport triscans missing from HOPS/ Documents missing?](#passport-triscans-missing-from-hops-documents-missing)
@@ -224,6 +225,8 @@
 3. if not -> deloitte
 4. .missingapp
 5. tag **ws-missingapp**
+6. resolve w .resubapp
+7. if not resolved after resub - PA
 
 
 # oops error
@@ -417,7 +420,7 @@ Kind regards,
 L2
 
 
-# FES STUFF w Alez Lams
+# FES STUFF w Alez Lams - pt1
 - DLQ dead letter queue - Means the messages were send but not rcieved and therefore end up in the DLQ 
 - SQS - simple message queues on amazon
 - change the thingy to 100 messges per page
@@ -434,7 +437,7 @@ L2
 ![alt text](image-32.png)
 
 1. copy the actual name - and paste in get DLQ message
-
+x
 ![alt text](image-30.png)
 
 8. so the top two line and bottom two are the brackets on the next so don't count, each message is 4 lines so..
@@ -456,6 +459,13 @@ L2
 15. paste the cmd into the terminal 
 
 ![alt text](image-34.png)
+
+# FES STUFF - pt2
+1. log into workspaces
+2. go to the amazon SQS - search 'sqs-fes'
+3. v1s are the ones that dont have v2 on the end
+4. v1s can be replayed one at a time 
+5. v2s can be replayed as a group
 
 
 ## Grey task 
